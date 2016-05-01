@@ -42,7 +42,7 @@ cd ~
 git clone git://github.com/thoughtbot/dotfiles.git
 sudo apt-get install vim
 env RCRC=$HOME/dotfiles/rcrc rcup
-
+source ~/.profile
 # Vim plugins
 # http://vimawesome.com/
 # https://github.com/VundleVim/Vundle.vim
@@ -97,6 +97,59 @@ cd ~/.vim/bundle/youcompleteme
 # ./install.py --all
 # --all is simple but --omnisharp-completer fails
 ./install.py --gocode-completer --tern-completer --racer-completer 
+
+# OmniSharp-vim
+cd ~/.vim/bundle/omnisharp-vim
+git submodule update --init --recursive
+cd server
+# xbuild    not working due to CS0518 error
+
+################################
 # Tmux
+################################
 # https://github.com/tmux/tmux
 sudo apt-get install tmux
+
+
+
+
+# OmniSharp
+# Cross platform .NET dev
+# http://www.omnisharp.net/
+## Yeoman
+## http://yeoman.io/
+sudo npm install -g yo
+## Generator
+## https://www.npmjs.com/package/generator-aspnet
+## Usage: yo aspnet, dnu restore, dnu build
+sudo npm install -g generator-aspnet
+
+## Install ASP.NET core
+## https://docs.asp.net/en/latest/getting-started/installing-on-linux.html
+### DNVM
+sudo apt-get install unzip curl
+curl -sSL https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.sh | DNX_BRANCH=dev sh && source ~/.dnx/dnvm/dnvm.sh
+### DNU
+sudo apt-get install libunwind8 gettext libssl-dev libcurl4-openssl-dev zlib1g libicu-dev uuid-dev -y
+dnvm upgrade -r coreclr
+dnvm upgrade -r mono
+### libuv
+### https://github.com/libuv/libuv
+sudo apt-get install make automake libtool curl
+curl -sSL https://github.com/libuv/libuv/archive/v1.8.0.tar.gz | sudo tar zxfv - -C /usr/local/src
+cd /usr/local/src/libuv-1.8.0
+sudo sh autogen.sh
+sudo ./configure
+sudo make
+sudo make install
+sudo rm -rf /usr/local/src/libuv-1.8.0 && cd ~/
+sudo ldconfig
+
+
+########## Need to modify
+# Keyboard
+sudo passwd
+su
+sudo echo 'XKBOPTIONS="ctrl:nocaps"' >> /etc/default/keyboard
+su hustlion
+sudo dpkg-reconfigure keyboard-configuration

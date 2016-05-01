@@ -32,3 +32,5 @@ export SCM_CHECK=true
 
 # Load Bash It
 source $BASH_IT/bash_it.sh
+
+[ -s "/home/hustlion/.dnx/dnvm/dnvm.sh" ] && . "/home/hustlion/.dnx/dnvm/dnvm.sh" # Load dnvm
