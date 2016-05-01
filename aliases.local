@@ -1,0 +1,3 @@
+alias icd='cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs'
+# ssh connect to my router
+alias rssh='ssh root@192.168.1.1'

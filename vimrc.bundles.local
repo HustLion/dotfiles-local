@@ -1,0 +1,12 @@
+
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'vim-airline/vim-airline'
+Plug 'majutsushi/tagbar'
+Plug 'danro/rename.vim'
+Plug 'mattn/emmet-vim'
+Plug 'godlygeek/tabular'
+Plug 'easymotion/vim-easymotion'
+Plug 'suan/vim-instant-markdown'
+Plug 'rizzatti/dash.vim'
+

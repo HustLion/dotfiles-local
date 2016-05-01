@@ -1,0 +1,10 @@
+[user]
+  name = Hustlion
+  email = hustlionm@qq.com
+[credential]
+  helper = osxkeychain
+
+[alias]
+  spush = push --recurse-submodules=on-demand
+  sdiff = !git diff && git submodule foreach 'git diff'
+  supdate = submodule update --remote --merge
