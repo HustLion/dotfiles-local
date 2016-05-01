@@ -110,8 +110,18 @@ cd server
 # https://github.com/tmux/tmux
 sudo apt-get install tmux
 
+## tpm
+## https://github.com/tmux-plugins/tpm
+## Currently broken, waiting to be resolved, may be due to the configs present
+## Need to figure them out
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+## tmuxinator
+### Ruby source
+gem sources --add https://ruby.taobao.org/ --remove https://rubygems.org/
 
 
+sudo gem install tmuxinator
 
 # OmniSharp
 # Cross platform .NET dev
@@ -150,6 +160,9 @@ sudo ldconfig
 # Keyboard
 sudo passwd
 su
+# http://askubuntu.com/questions/149971/how-do-you-remap-a-key-to-the-caps-lock-key-in-xubuntu
 sudo echo 'XKBOPTIONS="ctrl:nocaps"' >> /etc/default/keyboard
 su hustlion
+# press ok for all
 sudo dpkg-reconfigure keyboard-configuration
+

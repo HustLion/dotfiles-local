@@ -34,3 +34,5 @@ export SCM_CHECK=true
 source $BASH_IT/bash_it.sh
 
 [ -s "/home/hustlion/.dnx/dnvm/dnvm.sh" ] && . "/home/hustlion/.dnx/dnvm/dnvm.sh" # Load dnvm
+
+source ~/.bin/tmuxinator.bash
