@@ -1,5 +1,6 @@
 #!/usr/bin/sh
 # Common utils
+sudo apt-get install mc htop tree -y
 
 # LAMP Stack
 # PHP5 is deleted from xenial 16.04
@@ -12,6 +13,11 @@ sudo chown -R hustlion:hustlion /var/www
 # Meteor
 # Meteor packages: https://atmospherejs.com/
 curl https://install.meteor.com/ | sh
+
+# Bash-it
+# https://github.com/Bash-it/bash-it
+# Combined with my dotfiles.
+# git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
 
 # Oh-my-zsh
 # https://github.com/robbyrussell/oh-my-zsh
@@ -67,6 +73,30 @@ sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim 1
 sudo update-alternatives --set editor /usr/bin/vim
 sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim 1
 sudo update-alternatives --set vi /usr/bin/vim
+## compile YCM
+### which npm from Node
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install -y nodejs
+sudo npm install npm -g
+### which rustc from Rust
+curl -sSf https://static.rust-lang.org/rustup.sh | sh
+### which mono
+sudo add-apt-repository ppa:ermshiperete/monodevelop
+sudo apt-get update
+sudo apt-get install monodevelop-current mono-xbuild mono-complete
+### which go
+cd ~
+wget https://storage.googleapis.com/golang/go1.6.2.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.6.2.linux-amd64.tar.gz
+
+### which tsc from typescript
+sudo npm install -g typescript
+### which cmake
+sudo apt-get install build-essential cmake python-dev python3-dev -y
+cd ~/.vim/bundle/youcompleteme
+# ./install.py --all
+# --all is simple but --omnisharp-completer fails
+./install.py --gocode-completer --tern-completer --racer-completer 
 # Tmux
 # https://github.com/tmux/tmux
 sudo apt-get install tmux

@@ -12,3 +12,4 @@ Plug 'rizzatti/dash.vim'
 
 Plug 'tomasr/molokai'
 Plug 'valloric/youcompleteme'
+Plug 'omnisharp/omnisharp-vim'
