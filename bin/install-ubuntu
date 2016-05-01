@@ -1,0 +1,54 @@
+#!/usr/bin/sh
+# Common utils
+
+# LAMP Stack
+# PHP5 is deleted from xenial 16.04
+# configure PHP7 later.
+sudo apt-get install apache2 mysql-server
+sudo chown -R hustlion:hustlion /var/www
+# chech the privileges with
+# ls /var/www/ -l
+
+# Meteor
+# Meteor packages: https://atmospherejs.com/
+curl https://install.meteor.com/ | sh
+
+# Oh-my-zsh
+# https://github.com/robbyrussell/oh-my-zsh
+sudo apt install zsh
+chsh -s $(which zsh)
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+cd ~
+git clone https://github.com/powerline/fonts.git
+cd fonts
+./install.sh
+# RCM
+# rc file (dotfile) management
+# https://github.com/thoughtbot/rcm
+sudo add-apt-repository ppa:martin-frost/thoughtbot-rcm
+sudo apt-get update
+sudo apt-get install rcm
+
+# Thoughtbot dotfiles
+# https://github.com/thoughtbot/dotfiles
+# later you can totally customize
+cd ~
+git clone git://github.com/thoughtbot/dotfiles.git
+sudo apt-get install vim
+env RCRC=$HOME/dotfiles/rcrc rcup
+
+# Vim plugins
+# http://vimawesome.com/
+# https://github.com/VundleVim/Vundle.vim
+# https://github.com/Shougo/neobundle.vim 
+## Build vim for youcompleteme
+## https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source
+sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev \
+        libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
+            libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev \
+                ruby-dev git
+
+
+# Tmux
+# https://github.com/tmux/tmux
+sudo apt-get install tmux

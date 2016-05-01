@@ -10,3 +10,5 @@ Plug 'easymotion/vim-easymotion'
 Plug 'suan/vim-instant-markdown'
 Plug 'rizzatti/dash.vim'
 
+Plug 'tomasr/molokai'
+Plug 'valloric/youcompleteme'
