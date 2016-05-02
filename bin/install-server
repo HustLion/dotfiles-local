@@ -1,0 +1,13 @@
+#!/usr/bin/sh
+
+# Enough privileges to write to /var/www
+# by adding to the www-data group
+# Verify:
+# `id hustlion`
+# `group hustlion`
+sudo usermod -a -G www-data hustlion
+
+
+# Blogging with jekyll
+sudo mkdir /var/www/jekyll
+sudo chown -R hustlion:hustlion /var/www/jekyll/
