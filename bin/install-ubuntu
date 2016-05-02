@@ -47,7 +47,10 @@ mkdir ~/.fontconfig
 mv 10-powerline-symbols.conf ~/.fontconfig/
 ## to check the font path
 ## `xset q`
-
+## maybe there are duplicates as configured above
+## but anyway you should go to the terminal preference and choose a powerline font
+## Then those symbols will work
+## I choose Ubuntu Mono derivative Powerline Regular, 12pt
 
 # Solarized
 # http://ethanschoonover.com/solarized
