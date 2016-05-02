@@ -28,6 +28,42 @@ cd ~
 git clone https://github.com/powerline/fonts.git
 cd fonts
 ./install.sh
+## the above seems doesn't install all fonts properly
+## added to ~/.local/share/fonts
+## add this
+sudo apt-get install python-pip python-dev build-essential && sudo pip install --upgrade pip && sudo pip install --upgrade virtualenv 
+pip install --user powerline-status
+## So it's the symbol that is not properly installed
+## https://powerline.readthedocs.io/en/latest/installation/linux.html#font-installation
+cd ~
+wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+mkdir ~/.fonts
+mv PowerlineSymbols.otf ~/.fonts/
+fc-cache -vf ~/.fonts/
+mkdir ~/.config/fontconfig/conf.d
+mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
+mkdir ~/.fontconfig
+mv 10-powerline-symbols.conf ~/.fontconfig/
+## to check the font path
+## `xset q`
+
+
+# Solarized
+# http://ethanschoonover.com/solarized
+# https://github.com/altercation/solarized
+cd ~
+git clone https://github.com/altercation/solarized.git
+git clone https://github.com/Anthony25/gnome-terminal-colors-solarized.git
+cd gnome-terminal-colors-solarized
+## Be sure to choose `1` and `YES`
+./set_dark.sh
+## Dircolor
+cd ~
+git clone git://github.com/seebi/dircolors-solarized.git
+cp ~/dircolors-solarized/dircolors.256dark ~/.dircolors
+eval `dircolors ~/.dircolors`
+
 # RCM
 # rc file (dotfile) management
 # https://github.com/thoughtbot/rcm

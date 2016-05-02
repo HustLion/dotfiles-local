@@ -22,3 +22,8 @@ if [ -d "$HOME/.bin" ] ; then
 fi
 
 export PATH=$PATH:/usr/local/go/bin
+
+
+# Dircolors
+eval `dircolors ~/.dircolors`
+
