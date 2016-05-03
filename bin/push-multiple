@@ -1,0 +1,9 @@
+#!/bin/sh
+# current for pages repo only
+echo 'Push to origin(git@osc) master'
+git push origin master
+echo 'Push to coding master'
+git push coding master
+
+echo 'Push to CODE master'
+git push CODE master

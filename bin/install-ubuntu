@@ -195,6 +195,19 @@ sudo rm -rf /usr/local/src/libuv-1.8.0 && cd ~/
 sudo ldconfig
 
 
+################################
+# Blogging with Octopress (jekyll)
+# http://octopress.org/
+# If you want to build plugins, refer to this: 
+# http://octopress.org/2015/01/15/octopress-3.0-is-coming/
+# Before 3.0: https://github.com/imathis/octopress
+# 3.0: https://github.com/octopress/octopress
+################################
+sudo gem install jekyll
+sudo gem install octopress
+
+
+
 ########## Need to modify
 # Keyboard
 sudo passwd

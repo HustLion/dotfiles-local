@@ -1,0 +1,55 @@
+# ~/.tmuxinator/lion.yml
+# This yml is for general dev.
+# Featuring:
+# exp(eriment): practice new skills or check out new info
+# pages: write down ideas while exp
+# dot(files): quickly integrate with my dev env
+name: lion
+root: ~/
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: logs
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+# Runs after everything. Use it to attach to tmux with custom options etc.
+# post: tmux -CC attach -t lion
+
+windows:
+  - exp:
+      # layout: layout f800,229x64,0,0{114x64,0,0,3,114x64,115,0[114x32,115,0{57x32,115,0,6,56x32,173,0,15},114x31,115,33,14]}
+      root: ~/exp/
+      layout: even-horizontal
+      panes:
+        - vim
+        -
+  - pages:
+      root: ~/pages/
+      # layout: layout e14d,229x64,0,0{114x64,0,0,0,114x64,115,0[114x32,115,0,1,114x31,115,33{57x31,115,33,2,56x31,173,33,13}]}
+      layout: even-horizontal
+      panes:
+        - vim ~/pages/_drafts/todo.markdown
+        -
+            
+  - dot:
+      root: ~/dotfiles-local/
+      layout: even-horizontal
+      panes: 
+        - vim ~/dotfiles-local/bin/install-ubuntu
+        -
