@@ -1,5 +1,8 @@
 #!/usr/bin/sh
 # Common utils
+# manually change the source
+# https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/
+# TODO: automate the change of source with mkrc
 sudo apt-get install mc htop tree -y
 
 # LAMP Stack
@@ -31,6 +34,8 @@ cd fonts
 ## the above seems doesn't install all fonts properly
 ## added to ~/.local/share/fonts
 ## add this
+## pip source
+## TODO: automate https://mirrors.tuna.tsinghua.edu.cn/help/pypi/
 sudo apt-get install python-pip python-dev build-essential && sudo pip install --upgrade pip && sudo pip install --upgrade virtualenv 
 pip install --user powerline-status
 ## So it's the symbol that is not properly installed
@@ -117,6 +122,11 @@ sudo update-alternatives --set vi /usr/bin/vim
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt-get install -y nodejs
 sudo npm install npm -g
+### cnpm which could be a faster choice in China
+### https://github.com/cnpm/cnpm
+sudo npm install cnpm -g --registry=https://registry.npm.taobao.org
+
+
 ### which rustc from Rust
 curl -sSf https://static.rust-lang.org/rustup.sh | sh
 ### which mono
@@ -206,6 +216,26 @@ sudo ldconfig
 sudo gem install jekyll
 sudo gem install octopress
 
+
+################################
+# Configure common folders
+
+################################
+cd ~
+# experiment folder
+# exp/lib contains libraries to experiment with
+mkdir exp
+mkdir exp/lib
+# documentation folder
+mkdir docs
+## download docs that's valuable for me
+cd docs
+git clone --depth=1 https://github.com/mrdoob/three.js.git
+
+# the folder that contains source code that's worth reading
+# read source, rs for short
+cd ~
+mkdir rs
 
 
 ########## Need to modify
