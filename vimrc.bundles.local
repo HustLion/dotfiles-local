@@ -12,5 +12,6 @@ Plug 'rizzatti/dash.vim'
 
 Plug 'tomasr/molokai'
 Plug 'valloric/youcompleteme'
-Plug 'omnisharp/omnisharp-vim'
+" Plug 'omnisharp/omnisharp-vim'
 Plug 'tpope/vim-dispatch'
+Plug 'tomtom/tcomment_vim'
