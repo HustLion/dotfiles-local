@@ -223,6 +223,35 @@ sudo gem install jekyll
 sudo gem install octopress
 
 
+
+################################
+# HaXe
+
+################################
+
+# this installs both haxe and neko
+sudo add-apt-repository ppa:haxe/releases -y
+sudo apt-get update
+sudo apt-get install haxe -y
+mkdir ~/haxelib && haxelib setup ~/haxelib
+# this installs both openfl and lime
+haxelib install openfl
+haxelib run openfl setup
+
+
+# system util
+## Shutter
+sudo add-apt-repository ppa:shutter/ppa
+sudo apt-get update
+sudo apt-get install shutter
+
+
+## Lantern
+cd ~
+# git clone https://github.com/getlantern/lantern.git
+wget https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-beta-64-bit.deb
+sudo dpkg -i lantern-installer-beta-64-bit.deb
+
 ################################
 # Configure common folders
 
@@ -237,6 +266,10 @@ mkdir docs
 ## download docs that's valuable for me
 cd docs
 git clone --depth=1 https://github.com/mrdoob/three.js.git
+git clone --depth=1 https://github.com/mrdoob/texgen.js.git
+git clone --depth=1 https://github.com/mrdoob/glsl-sandbox.git
+git clone --depth=1 https://github.com/openfl/openfl
+git clone --depth=1 https://github.com/mrdoob/Hi-ReS-Stats.git
 
 # the folder that contains source code that's worth reading
 # read source, rs for short
