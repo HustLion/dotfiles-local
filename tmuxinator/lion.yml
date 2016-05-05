@@ -39,6 +39,7 @@ windows:
       panes:
         - vim
         -
+        # terminal for doc, rs, exp
   - pages:
       root: ~/pages/
       # layout: layout e14d,229x64,0,0{114x64,0,0,0,114x64,115,0[114x32,115,0,1,114x31,115,33{57x31,115,33,2,56x31,173,33,13}]}
@@ -53,3 +54,9 @@ windows:
       panes: 
         - vim ~/dotfiles-local/bin/install-ubuntu
         -
+        # terminal for both dotfiles and dotfiles-local
+  - status:
+      layout: even-horizontal
+      panes:
+          - htop
+          - mc

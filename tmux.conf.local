@@ -127,6 +127,10 @@ if-shell "#{$TMUX_VERSION_MAJOR} -gt 1 -o \( #{$TMUX_VERSION_MAJOR} -eq 1 -a #{$
 # $ tmux source ~/.tmux.conf
 bind R source-file ~/.tmux.conf ; display-message "Config reloaded.."
 
+# Mouse mode
+# For easy selection in complex layout
+# but this disables normal right-click menu
+# set -g mouse on
 
 # TPM
 # Press prefix + I (capital I, as in Install) to fetch the plugin

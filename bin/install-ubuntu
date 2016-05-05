@@ -22,6 +22,10 @@ curl https://install.meteor.com/ | sh
 # Combined with my dotfiles.
 # git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
 
+
+# Lynx
+sudo apt-get install lynx launchy launchy-plugins luanchy-skins
+
 # Oh-my-zsh
 # https://github.com/robbyrussell/oh-my-zsh
 sudo apt install zsh
