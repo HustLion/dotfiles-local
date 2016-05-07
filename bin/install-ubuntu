@@ -26,6 +26,10 @@ curl https://install.meteor.com/ | sh
 # Util
 sudo apt-get install lynx launchy launchy-plugins launchy-skins ppa-purge
 
+## ls /etc/apt/sources.list.d
+## sudo ppa-purge ppa_name
+## sudo apt-get purge package_name
+
 ## Zeal for documentation
 ## https://github.com/zealdocs/zeal/
 sudo add-apt-repository ppa:zeal-developers/ppa
@@ -33,12 +37,10 @@ sudo apt-get update && sudo apt-get install zeal
 
 ## F.lux for color adaption
 ## https://justgetflux.com/
-# sudo add-apt-repository ppa:kilian/f.lux
-# sudo apt-get update
-# sudo apt-get install fluxgui
-# failed
-git clone https://github.com/xflux-gui/xflux-gui.git
-
+# git clone https://github.com/xflux-gui/xflux-gui.git
+sudo add-apt-repository ppa:nathan-renniewaldock/flux
+sudo apt-get update
+sudo apt-get install fluxgui
 
 ## launchy theme HUD
 ## http://starkiteckt.deviantart.com/art/HUD-Launchy-Skin-516629091
