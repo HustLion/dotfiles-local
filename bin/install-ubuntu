@@ -24,7 +24,22 @@ curl https://install.meteor.com/ | sh
 
 
 # Util
-sudo apt-get install lynx launchy launchy-plugins launchy-skins
+sudo apt-get install lynx launchy launchy-plugins launchy-skins ppa-purge
+
+## Zeal for documentation
+## https://github.com/zealdocs/zeal/
+sudo add-apt-repository ppa:zeal-developers/ppa
+sudo apt-get update && sudo apt-get install zeal
+
+## F.lux for color adaption
+## https://justgetflux.com/
+# sudo add-apt-repository ppa:kilian/f.lux
+# sudo apt-get update
+# sudo apt-get install fluxgui
+# failed
+git clone https://github.com/xflux-gui/xflux-gui.git
+
+
 ## launchy theme HUD
 ## http://starkiteckt.deviantart.com/art/HUD-Launchy-Skin-516629091
 sudo unzip ~/dotfiles-local/host-theme/hud_launchy_skin_by_starkiteckt-d8jl5k3.zip -d /usr/share/launchy/skins/
@@ -251,6 +266,20 @@ cd ~
 # git clone https://github.com/getlantern/lantern.git
 wget https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-beta-64-bit.deb
 sudo dpkg -i lantern-installer-beta-64-bit.deb
+
+
+## Genymotion
+## https://www.genymotion.com/download/
+## sudo ./genymotion-2.6.0-ubuntu15_x64.bin
+## /opt/genymobile/genymotion
+## Need virtual box
+## https://www.virtualbox.org/wiki/Downloads
+su
+echo 'deb http://download.virtualbox.org/virtualbox/debian xenial contrib' >> /etc/apt/sources.list
+su hustlion
+wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install dkms virtualbox-5.0
 
 ################################
 # Configure common folders

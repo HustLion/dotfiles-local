@@ -40,3 +40,8 @@ nmap <F8> :TagbarToggle<CR>
 
 " Instant Markdown
 filetype plugin on
+
+
+" Number
+set number
+set numberwidth=5
