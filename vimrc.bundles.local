@@ -27,3 +27,18 @@ Plug 'jelera/vim-javascript-syntax'
 " js syntax
 Plug 'othree/javascript-libraries-syntax.vim'
 let g:used_javascript_libs = 'underscore,backbone,jquery,angularjs,react,flux,requirejs'
+
+" about folding
+" later: https://github.com/sjl/dotfiles/blob/eea18b00b8c74943f5094fddf91d3c2a7e0a7242/vim/vimrc#L534
+" http://vimcasts.org/episodes/how-to-fold/
+set foldmethod=syntax
+set foldlevelstart=1
+
+let javaScript_fold=1         " JavaScript
+let perl_fold=1               " Perl
+let php_folding=1             " PHP
+let r_syntax_folding=1        " R
+let ruby_fold=1               " Ruby
+let sh_fold_enabled=1         " sh
+let vimsyn_folding='af'       " Vim script
+let xml_syntax_folding=1      " XML
