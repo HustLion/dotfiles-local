@@ -42,6 +42,11 @@ sudo add-apt-repository ppa:nathan-renniewaldock/flux
 sudo apt-get update
 sudo apt-get install fluxgui
 
+## Chrome
+## https://www.google.co.jp/chrome/browser/thankyou.html?platform=linux
+## sudo dpkg -i google-chrome-stable_current_amd64.deb
+sudo apt-get install google-chrome-stable
+
 ## launchy theme HUD
 ## http://starkiteckt.deviantart.com/art/HUD-Launchy-Skin-516629091
 sudo unzip ~/dotfiles-local/host-theme/hud_launchy_skin_by_starkiteckt-d8jl5k3.zip -d /usr/share/launchy/skins/
@@ -268,6 +273,13 @@ cd ~
 # git clone https://github.com/getlantern/lantern.git
 wget https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-beta-64-bit.deb
 sudo dpkg -i lantern-installer-beta-64-bit.deb
+# 1. Lantern proxy
+# http://127.0.0.1:8787
+
+# 2. Lantern PAC (Proxy Auto-Configuration)
+# http://127.0.0.1:16823/proxy_on.pac
+
+# curl --proxy 127.0.0.1:8787 www.google.com
 
 
 ## Genymotion
@@ -282,6 +294,13 @@ su hustlion
 wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
 sudo apt-get update
 sudo apt-get install dkms virtualbox-5.0
+
+## Dropbox
+cd ~
+wget https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb
+sudo dpkg -i dropbox_2015.10.28_amd64.deb
+nautilus --quit
+dropbox start -i 
 
 ################################
 # Configure common folders
