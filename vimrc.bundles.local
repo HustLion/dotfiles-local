@@ -21,3 +21,9 @@ Plug 'KabbAmine/zeavim.vim'
 Plug 'tmhedberg/SimpylFold'
 " Js folding
 Plug 'pangloss/vim-javascript'
+Plug 'jelera/vim-javascript-syntax'
+
+
+" js syntax
+Plug 'othree/javascript-libraries-syntax.vim'
+let g:used_javascript_libs = 'underscore,backbone,jquery,angularjs,react,flux,requirejs'
