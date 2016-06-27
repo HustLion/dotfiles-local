@@ -1,21 +1,25 @@
-#!/usr/bin/sh
+#!/bin/sh
 # Common utils
 # manually change the source
 # https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/
 # TODO: automate the change of source with mkrc
+
+# Lantern is not on at first, so disable proxy
+source ~/.profile
+noproxy
 sudo apt-get install mc htop tree -y
 
 # LAMP Stack
 # PHP5 is deleted from xenial 16.04
 # configure PHP7 later.
-sudo apt-get install apache2 mysql-server
+sudo apt-get install -y apache2 mysql-server
 sudo chown -R hustlion:hustlion /var/www
 # chech the privileges with
 # ls /var/www/ -l
 
 # Meteor
 # Meteor packages: https://atmospherejs.com/
-curl https://install.meteor.com/ | sh
+# curl https://install.meteor.com/ | sh
 
 # Bash-it
 # https://github.com/Bash-it/bash-it
@@ -24,7 +28,7 @@ curl https://install.meteor.com/ | sh
 
 
 # Util
-sudo apt-get install lynx launchy launchy-plugins launchy-skins ppa-purge
+sudo apt-get install -y lynx launchy launchy-plugins launchy-skins ppa-purge
 
 ## ls /etc/apt/sources.list.d
 ## sudo ppa-purge ppa_name
@@ -33,19 +37,19 @@ sudo apt-get install lynx launchy launchy-plugins launchy-skins ppa-purge
 ## Zeal for documentation
 ## https://github.com/zealdocs/zeal/
 sudo add-apt-repository ppa:zeal-developers/ppa
-sudo apt-get update && sudo apt-get install zeal
+sudo apt-get update && sudo apt-get install -y zeal
 
 ## F.lux for color adaption
 ## https://justgetflux.com/
 # git clone https://github.com/xflux-gui/xflux-gui.git
 sudo add-apt-repository ppa:nathan-renniewaldock/flux
 sudo apt-get update
-sudo apt-get install fluxgui
+sudo apt-get install -y fluxgui
 
 ## Chrome
 ## https://www.google.co.jp/chrome/browser/thankyou.html?platform=linux
 ## sudo dpkg -i google-chrome-stable_current_amd64.deb
-sudo apt-get install google-chrome-stable
+sudo apt-get install -y google-chrome-stable
 
 ## launchy theme HUD
 ## http://starkiteckt.deviantart.com/art/HUD-Launchy-Skin-516629091
@@ -55,10 +59,15 @@ sudo unzip ~/dotfiles-local/host-theme/hud_launchy_skin_by_starkiteckt-d8jl5k3.z
 sudo apt install zsh
 chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-cd ~
-git clone https://github.com/powerline/fonts.git
-cd fonts
-./install.sh
+
+if [ -d ~/fonts ]; then
+	echo "Fonts has been installed."
+else
+	cd ~
+	git clone https://github.com/powerline/fonts.git
+	cd fonts
+	./install.sh
+fi
 ## the above seems doesn't install all fonts properly
 ## added to ~/.local/share/fonts
 ## add this
@@ -68,6 +77,7 @@ sudo apt-get install python-pip python-dev build-essential && sudo pip install -
 pip install --user powerline-status
 ## So it's the symbol that is not properly installed
 ## https://powerline.readthedocs.io/en/latest/installation/linux.html#font-installation
+
 cd ~
 wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
 wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
@@ -95,26 +105,30 @@ cd gnome-terminal-colors-solarized
 ## Be sure to choose `1` and `YES`
 ./set_dark.sh
 ## Dircolor
+if [ -d ~/dircolors-solarized ]; then
+	echo "dircolors-solarized has been installed."
+else
 cd ~
 git clone git://github.com/seebi/dircolors-solarized.git
 cp ~/dircolors-solarized/dircolors.256dark ~/.dircolors
 eval `dircolors ~/.dircolors`
+fi
 
 # RCM
 # rc file (dotfile) management
 # https://github.com/thoughtbot/rcm
-sudo add-apt-repository ppa:martin-frost/thoughtbot-rcm
-sudo apt-get update
-sudo apt-get install rcm
+# sudo add-apt-repository ppa:martin-frost/thoughtbot-rcm
+# sudo apt-get update
+# sudo apt-get install rcm
 
 # Thoughtbot dotfiles
 # https://github.com/thoughtbot/dotfiles
 # later you can totally customize
-cd ~
-git clone git://github.com/thoughtbot/dotfiles.git
-sudo apt-get install vim
-env RCRC=$HOME/dotfiles/rcrc rcup
-source ~/.profile
+#cd ~
+#git clone git://github.com/thoughtbot/dotfiles.git
+#sudo apt-get install vim
+#env RCRC=$HOME/dotfiles/rcrc rcup
+#source ~/.profile
 # Vim plugins
 # http://vimawesome.com/
 # https://github.com/VundleVim/Vundle.vim
@@ -122,6 +136,11 @@ source ~/.profile
 ## Build vim for youcompleteme
 ## https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source
 ## Uninstall: dpkg -r vim
+
+if [ -d ~/vim ]; then
+	echo "customized vim has been installed"
+else
+
 sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev \
         libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
             libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev \
@@ -145,6 +164,7 @@ sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim 1
 sudo update-alternatives --set editor /usr/bin/vim
 sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim 1
 sudo update-alternatives --set vi /usr/bin/vim
+fi
 ## compile YCM
 ### which npm from Node
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
@@ -160,7 +180,7 @@ curl -sSf https://static.rust-lang.org/rustup.sh | sh
 ### which mono
 sudo add-apt-repository ppa:ermshiperete/monodevelop
 sudo apt-get update
-sudo apt-get install monodevelop-current mono-xbuild mono-complete
+sudo apt-get install -y monodevelop-current mono-xbuild mono-complete
 ### which go
 cd ~
 wget https://storage.googleapis.com/golang/go1.6.2.linux-amd64.tar.gz
@@ -191,6 +211,7 @@ sudo apt-get install tmux
 ## https://github.com/tmux-plugins/tpm
 ## Currently broken, waiting to be resolved, may be due to the configs present
 ## Need to figure them out
+cd ~
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ## tmuxinator

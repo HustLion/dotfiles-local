@@ -33,7 +33,27 @@ eval `dircolors ~/.dircolors`
 # Lantern proxy
 # http://127.0.0.1:8787
 # https://wiki.archlinux.org/index.php/Proxy_settings
-export http_proxy=http://127.0.0.1:8787/
+
+# 这里写你购买的地址
+PROXY_1=xxxxxx.xxx.xxx:xxx
+PROXY_2=xxxxxx.xxx.xxx:xxx
+PROXY_3=xxxxxx.xxx.xxx:xxx
+LANTERN=127.0.0.1:8787
+# 这里填打开终端默认的代理，我这里用的是LANTERN
+defp=$LANTERN
+
+
+# No Proxy
+function noproxy
+{
+    unset http_proxy HTTP_PROXY https_proxy HTTPS_PROXY all_proxy ALL_PROXY ftp_proxy FTP_PROXY dns_proxy DNS_PROXY JAVA_OPTS GRADLE_OPTS MAVEN_OPTS
+    echo "clear proxy done"
+}
+
+
+function setproxy
+{
+    export http_proxy=http://127.0.0.1:8787/
 export https_proxy=$http_proxy
 export ftp_proxy=$http_proxy
 export rsync_proxy=$http_proxy
@@ -49,3 +69,10 @@ export HTTPS_PROXY=$https_proxy
 export export JAVA_OPTS="-Dhttp.proxyHost=$HOST -Dhttp.proxyPort=$PORT -Dhttps.proxyHost=$HOST -Dhttps.proxyPort=$PORT"
 export GRADLE_OPTS="-Dgradle.user.home=$HOME/.gradle"
 export MAVEN_OPTS=$JAVA_OPTS
+    echo "current proxy is ${http_proxy}"
+}
+
+setproxy
+
+
+
