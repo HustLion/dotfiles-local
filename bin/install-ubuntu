@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Common utils
 # manually change the source
 # https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/
@@ -36,29 +36,44 @@ sudo apt-get install -y lynx launchy launchy-plugins launchy-skins ppa-purge
 
 ## Zeal for documentation
 ## https://github.com/zealdocs/zeal/
-sudo add-apt-repository ppa:zeal-developers/ppa
-sudo apt-get update && sudo apt-get install -y zeal
+if [ `which zeal` != "" ]; then
+	echo "All ppas have been added."
+else
+
+	sudo add-apt-repository ppa:zeal-developers/ppa
+    sudo add-apt-repository ppa:nathan-renniewaldock/flux
+    sudo apt-get update
+fi
+
+sudo apt-get install -y zeal fluxgui chromium-browser
 
 ## F.lux for color adaption
 ## https://justgetflux.com/
 # git clone https://github.com/xflux-gui/xflux-gui.git
-sudo add-apt-repository ppa:nathan-renniewaldock/flux
-sudo apt-get update
-sudo apt-get install -y fluxgui
 
 ## Chrome
 ## https://www.google.co.jp/chrome/browser/thankyou.html?platform=linux
 ## sudo dpkg -i google-chrome-stable_current_amd64.deb
-sudo apt-get install -y google-chrome-stable
+# sudo apt-get install -y google-chrome-stable
 
 ## launchy theme HUD
 ## http://starkiteckt.deviantart.com/art/HUD-Launchy-Skin-516629091
-sudo unzip ~/dotfiles-local/host-theme/hud_launchy_skin_by_starkiteckt-d8jl5k3.zip -d /usr/share/launchy/skins/
+if [ -d /usr/share/launchy/skins/hud_launchy_skin_by_starkiteckt-d8jl5k3 ]; then
+    echo "Lanchy skins installed."
+else
+    sudo unzip ~/dotfiles-local/host-theme/hud_launchy_skin_by_starkiteckt-d8jl5k3.zip -d /usr/share/launchy/skins/
+fi
+
 # Oh-my-zsh
 # https://github.com/robbyrussell/oh-my-zsh
+if [ -d ~/.oh-my-zsh ]; then
+	echo "Oh-my-zsh has been installed"
+else
 sudo apt install zsh
 chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+fi
+
 
 if [ -d ~/fonts ]; then
 	echo "Fonts has been installed."
@@ -98,12 +113,16 @@ mv 10-powerline-symbols.conf ~/.fontconfig/
 # Solarized
 # http://ethanschoonover.com/solarized
 # https://github.com/altercation/solarized
+if [ -d ~/solarized ]; then
+    echo "Solarized color has been configured."
+else
 cd ~
 git clone https://github.com/altercation/solarized.git
 git clone https://github.com/Anthony25/gnome-terminal-colors-solarized.git
 cd gnome-terminal-colors-solarized
 ## Be sure to choose `1` and `YES`
 ./set_dark.sh
+fi
 ## Dircolor
 if [ -d ~/dircolors-solarized ]; then
 	echo "dircolors-solarized has been installed."
@@ -145,7 +164,12 @@ sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev \
         libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
             libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev \
                 ruby-dev git
+if [ `which vim` != "" ]; then
 sudo apt-get remove vim vim-runtime gvim vim-tiny vim-common vim-gui-common
+else
+	echo "Vim is not installed, continue."
+fi
+
 cd ~
 git clone https://github.com/vim/vim.git
 cd vim
