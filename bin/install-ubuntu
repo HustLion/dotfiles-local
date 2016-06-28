@@ -5,6 +5,23 @@
 # TODO: automate the change of source with mkrc
 
 # Lantern is not on at first, so disable proxy
+
+# Oh-my-zsh
+# https://github.com/robbyrussell/oh-my-zsh
+if [ -d ~/.oh-my-zsh ]; then
+	echo "Oh-my-zsh has been installed"
+else
+    sudo apt install zsh
+    chsh -s $(which zsh)
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+fi
+
+sudo add-apt-repository ppa:martin-frost/thoughtbot-rcm
+sudo apt-get update
+sudo apt-get install rcm
+
+env RCRC=$HOME/dotfiles/rcrc rcup
+
 source ~/.profile
 noproxy
 sudo apt-get install mc htop tree -y
@@ -64,15 +81,7 @@ else
     sudo unzip ~/dotfiles-local/host-theme/hud_launchy_skin_by_starkiteckt-d8jl5k3.zip -d /usr/share/launchy/skins/
 fi
 
-# Oh-my-zsh
-# https://github.com/robbyrussell/oh-my-zsh
-if [ -d ~/.oh-my-zsh ]; then
-	echo "Oh-my-zsh has been installed"
-else
-sudo apt install zsh
-chsh -s $(which zsh)
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-fi
+
 
 
 if [ -d ~/fonts ]; then
