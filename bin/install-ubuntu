@@ -6,6 +6,17 @@
 
 # Lantern is not on at first, so disable proxy
 
+########## Prerequisite
+# Keyboard
+# sudo passwd
+# su
+# http://askubuntu.com/questions/149971/how-do-you-remap-a-key-to-the-caps-lock-key-in-xubuntu
+# echo 'XKBOPTIONS="ctrl:nocaps"' | sudo tee -a /etc/default/keyboard
+# press ok for all
+# sudo dpkg-reconfigure keyboard-configuration
+
+######### Main body
+
 # Oh-my-zsh
 # https://github.com/robbyrussell/oh-my-zsh
 if [ -d ~/.oh-my-zsh ]; then
@@ -16,7 +27,7 @@ else
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
-sudo add-apt-repository ppa:martin-frost/thoughtbot-rcm
+sudo add-apt-repository -y ppa:martin-frost/thoughtbot-rcm
 sudo apt-get update
 sudo apt-get install rcm
 
@@ -347,7 +358,7 @@ sudo dpkg -i lantern-installer-beta-64-bit.deb
 ## Need virtual box
 ## https://www.virtualbox.org/wiki/Downloads
 su
-echo 'deb http://download.virtualbox.org/virtualbox/debian xenial contrib' >> /etc/apt/sources.list
+sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian xenial contrib" >> /etc/apt/sources.list'
 su hustlion
 wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
 sudo apt-get update
@@ -391,13 +402,4 @@ cd ~
 mkdir rs
 
 
-########## Need to modify
-# Keyboard
-sudo passwd
-su
-# http://askubuntu.com/questions/149971/how-do-you-remap-a-key-to-the-caps-lock-key-in-xubuntu
-sudo echo 'XKBOPTIONS="ctrl:nocaps"' >> /etc/default/keyboard
-su hustlion
-# press ok for all
-sudo dpkg-reconfigure keyboard-configuration
 
