@@ -57,8 +57,11 @@ if [ `which zeal` != "" ]; then
 	echo "All ppas have been added."
 else
 
-	sudo add-apt-repository ppa:zeal-developers/ppa
-    sudo add-apt-repository ppa:nathan-renniewaldock/flux
+	sudo add-apt-repository ppa:zeal-developers/ppa -y
+    sudo add-apt-repository -y ppa:nathan-renniewaldock/flux 
+    sudo add-apt-repository -y ppa:ermshiperete/monodevelop
+    sudo add-apt-repository ppa:haxe/releases -y
+    sudo add-apt-repository -y ppa:shutter/ppa
     sudo apt-get update
 fi
 
@@ -97,7 +100,7 @@ fi
 ## add this
 ## pip source
 ## TODO: automate https://mirrors.tuna.tsinghua.edu.cn/help/pypi/
-sudo apt-get install python-pip python-dev build-essential && sudo pip install --upgrade pip && sudo pip install --upgrade virtualenv 
+sudo apt-get install -y python-pip python-dev build-essential && sudo pip install --upgrade pip && sudo pip install --upgrade virtualenv 
 pip install --user powerline-status
 ## So it's the symbol that is not properly installed
 ## https://powerline.readthedocs.io/en/latest/installation/linux.html#font-installation
@@ -169,12 +172,12 @@ if [ -d ~/vim ]; then
 	echo "customized vim has been installed"
 else
 
-sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev \
+sudo apt-get install -y libncurses5-dev libgnome2-dev libgnomeui-dev \
         libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
             libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev \
                 ruby-dev git
 if [ `which vim` != "" ]; then
-sudo apt-get remove vim vim-runtime gvim vim-tiny vim-common vim-gui-common
+sudo apt-get remove -y vim vim-runtime gvim vim-tiny vim-common vim-gui-common
 else
 	echo "Vim is not installed, continue."
 fi
@@ -211,7 +214,7 @@ sudo npm install cnpm -g --registry=https://registry.npm.taobao.org
 ### which rustc from Rust
 curl -sSf https://static.rust-lang.org/rustup.sh | sh
 ### which mono
-sudo add-apt-repository ppa:ermshiperete/monodevelop
+
 sudo apt-get update
 sudo apt-get install -y monodevelop-current mono-xbuild mono-complete
 ### which go
@@ -220,9 +223,13 @@ wget https://storage.googleapis.com/golang/go1.6.2.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go1.6.2.linux-amd64.tar.gz
 
 ### which tsc from typescript
-sudo npm install -g typescript
+if [ `which tsc` != "" ]; then
+    echo "typescript has been installed"
+else
+    sudo npm install -g typescript
+fi
 ### which cmake
-sudo apt-get install build-essential cmake python-dev python3-dev -y
+sudo apt-get install -y build-essential cmake python-dev python3-dev -y
 cd ~/.vim/bundle/youcompleteme
 # ./install.py --all
 # --all is simple but --omnisharp-completer fails
@@ -268,7 +275,7 @@ sudo npm install -g generator-aspnet
 ## Install ASP.NET core
 ## https://docs.asp.net/en/latest/getting-started/installing-on-linux.html
 ### DNVM
-sudo apt-get install unzip curl
+sudo apt-get install -y unzip curl
 curl -sSL https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.sh | DNX_BRANCH=dev sh && source ~/.dnx/dnvm/dnvm.sh
 ### DNU
 sudo apt-get install libunwind8 gettext libssl-dev libcurl4-openssl-dev zlib1g libicu-dev uuid-dev -y
@@ -276,7 +283,7 @@ dnvm upgrade -r coreclr
 dnvm upgrade -r mono
 ### libuv
 ### https://github.com/libuv/libuv
-sudo apt-get install make automake libtool curl
+sudo apt-get install -y make automake libtool curl
 curl -sSL https://github.com/libuv/libuv/archive/v1.8.0.tar.gz | sudo tar zxfv - -C /usr/local/src
 cd /usr/local/src/libuv-1.8.0
 sudo sh autogen.sh
@@ -306,8 +313,7 @@ sudo gem install octopress
 ################################
 
 # this installs both haxe and neko
-sudo add-apt-repository ppa:haxe/releases -y
-sudo apt-get update
+
 sudo apt-get install haxe -y
 mkdir ~/haxelib && haxelib setup ~/haxelib
 # this installs both openfl and lime
@@ -317,8 +323,6 @@ haxelib run openfl setup
 
 # system util
 ## Shutter
-sudo add-apt-repository ppa:shutter/ppa
-sudo apt-get update
 sudo apt-get install shutter
 
 
