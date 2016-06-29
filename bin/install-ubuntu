@@ -105,7 +105,7 @@ else
 	git clone https://github.com/powerline/fonts.git
 	cd fonts
 	./install.sh
-fi
+## not sure if the above is enough 20160628
 ## the above seems doesn't install all fonts properly
 ## added to ~/.local/share/fonts
 ## add this
@@ -113,8 +113,20 @@ fi
 ## TODO: automate https://mirrors.tuna.tsinghua.edu.cn/help/pypi/
 sudo apt-get install -y python-pip python-dev build-essential && sudo pip install --upgrade pip && sudo pip install --upgrade virtualenv 
 pip install --user powerline-status
+
+fi
 ## So it's the symbol that is not properly installed
 ## https://powerline.readthedocs.io/en/latest/installation/linux.html#font-installation
+# later try:
+# `xterm*font: Sublime\ Text\ 2-12
+# in `~/.Xresources
+# for now, use GUI to choose: Source Code Pro for Powerline Medium 11
+
+if [ -d ~/.fonts ]; then
+
+    echo "Fonts has been configured."
+    
+else
 
 cd ~
 wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
@@ -126,6 +138,8 @@ mkdir ~/.config/fontconfig/conf.d
 mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
 mkdir ~/.fontconfig
 mv 10-powerline-symbols.conf ~/.fontconfig/
+
+fi
 ## to check the font path
 ## `xset q`
 ## maybe there are duplicates as configured above
@@ -342,6 +356,8 @@ cd ~
 # git clone https://github.com/getlantern/lantern.git
 wget https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-beta-64-bit.deb
 sudo dpkg -i lantern-installer-beta-64-bit.deb
+lantern
+setproxy
 # 1. Lantern proxy
 # http://127.0.0.1:8787
 
