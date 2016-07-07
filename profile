@@ -72,7 +72,9 @@ export MAVEN_OPTS=$JAVA_OPTS
     echo "current proxy is ${http_proxy}"
 }
 
+
 setproxy
 
-
+# anaconda
+export PATH=/home/hustlion/anaconda2/bin:$PATH
 
